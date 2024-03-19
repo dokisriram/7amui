@@ -1,0 +1,12 @@
+[
+    {
+        "label": "User ID",
+        "type": "text",
+        "errMsg": "Please Enter User ID"
+    },
+    {
+        "label": "Password",
+        "type": "password",
+        "errMsg": "Please Enter Password"
+    }
+]

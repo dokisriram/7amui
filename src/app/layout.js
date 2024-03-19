@@ -1,26 +1,26 @@
 "use client"
 import { Inter } from "next/font/google";
 import "./globals.css";
+import 'bootstrap/dist/css/bootstrap.css'
 import { appStore } from "@/redux/store/appStore";
 import { Provider } from "react-redux";
-import Header from "@/components/Header";
-import { Footer } from "@/components/Footer";
-import { Menu } from "@/components/Menu";
+import { RootLayoutWrapper } from "./layoutWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
 
-export default function RootLayout({ children }) {
+const RootLayout = ({ children }) => {
   return (
     <html lang="en">
       <body className={inter.className}>
         <Provider store={appStore}>
-          <Header />
-          <Menu />
-          {children}
-          <Footer />
+          <RootLayoutWrapper>
+            {children}
+          </RootLayoutWrapper>
         </Provider>
       </body>
     </html>
   );
 }
+
+export default RootLayout

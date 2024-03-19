@@ -3,8 +3,8 @@ import styles from './Footer.module.css'
 
 const Footer = () => {
   return (
-    <div>
-      Footer
+    <div className='text-center position-fixed bottom-0 w-100 bg-primary text-white'>
+      &copy; rights belongs to me.
     </div>
   )
 }
