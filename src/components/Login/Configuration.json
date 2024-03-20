@@ -1,12 +1,20 @@
 [
     {
+        "name": "uid",
         "label": "User ID",
         "type": "text",
-        "errMsg": "Please Enter User ID"
+        "errMsg": "Please Enter User ID",
+        "isShowError": false,
+        "value": "",
+        "criteria": ["REQUIRED", "EMAIL"]
     },
     {
+        "name": "pwd",
         "label": "Password",
         "type": "password",
-        "errMsg": "Please Enter Password"
+        "errMsg": "Please Enter Password",
+        "isShowError": false,
+        "value": "",
+        "criteria": ["REQUIRED", "MIN5CHARS"]
     }
 ]
