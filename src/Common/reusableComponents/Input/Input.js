@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
-const Input = ({label, errMsg, type, isShowError, handleChange, name, value}) => {
+const Input = ({label, errMsg, type, isShowError, handleChange, name, value, options, values}) => {
+    const fnPrpareInputControls = () => {
+        switch(type){
+            case 'text':
+            case 'password':
+            case 'number':
+                return <input name={name} value={value} onChange={handleChange} type={type} className="form-control" />
+            case 'radio':
+                return <div>
+                    {
+                        options.map((val, ind) => {
+                            return <Fragment key={`div_${ind}`}><input onChange={handleChange} value={values[ind]} type={type} name={name} /><span className='ms-2 me-3'>{val}</span></Fragment>
+                        })
+                    }
+                </div>;
+            case 'checkbox':
+                return <div>
+                {
+                    options.map((val, ind) => {
+                        return <Fragment key={`div_${ind}`}><input onChange={handleChange} value={values[ind]} type={type} name={name} /><span className='ms-2 me-3'>{val}</span></Fragment>
+                    })
+                }
+            </div>;
+        }
+    }
     return (
         <div>
             <div className='row mb-3'>
@@ -8,7 +32,7 @@ const Input = ({label, errMsg, type, isShowError, handleChange, name, value}) =>
                     <label htmlFor="">{label}</label>
                 </div>
                 <div className="col-sm-3">
-                    <input name={name} value={value} onChange={handleChange} type={type} className="form-control" />
+                    {fnPrpareInputControls()}
                 </div>
                 <div className="col-sm-4">
                     { isShowError && <b className='text-danger'>{errMsg}</b> }

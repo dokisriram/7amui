@@ -1,36 +1,25 @@
-import React, { useState } from 'react'
+"use client"
+
+import React, { useRef, useState } from 'react'
 import styles from './Login.module.css'
 import { Input } from '@/Common/reusableComponents/Input'
 import inputControls from './configuration.json'
-import { regExp } from '@/Common/validations/validations'
+import { regExp, validateForm, validateInputControl } from '@/Common/validations/validations'
+import Link from 'next/link'
 
 
 const Login = () => {
   const [inputControlsArr, setInputControlsArr] = useState(inputControls)
   const handleLogin = () => {
+    const [isInvalidForm, dataObj] = validateForm(inputControlsArr, setInputControlsArr)
+    if(isInvalidForm){
+      return
+    }
+    console.log(dataObj)
     alert('send request to server')
   }
   const handleChange = (eve) => {
-    const { name, value } = eve.target;
-    const clonedinputControlsArray = JSON.parse(JSON.stringify(inputControlsArr));
-    const inputControlObj = clonedinputControlsArray.find((obj) => {
-      return obj.name === name
-    });
-    inputControlObj.isShowError = false;
-    inputControlObj.value = value;
-    const { criteria } = inputControlObj;
-    debugger
-    for (let i = 0; i < criteria?.length; i++) {
-      const regExFn = regExp[criteria[i]]
-      const errMsg = regExFn(value);
-      if(errMsg){
-        inputControlObj.errMsg = errMsg;
-        inputControlObj.isShowError = true;
-        break
-      }
-    }
-    setInputControlsArr(clonedinputControlsArray)
-    
+      validateInputControl(eve, inputControlsArr, setInputControlsArr)
   }
   return (
     <div className='container-fluid'>
@@ -42,7 +31,8 @@ const Login = () => {
       }
       <div className='row'>
         <div className='offset-sm-5 col-sm-7'>
-          <button className='btn btn-primary' onClick={handleLogin} >Login </button>
+          <button className='btn btn-primary me-3' onClick={handleLogin} >Login </button>
+          <Link href="/register">Register</Link>
         </div>
       </div>
     </div>

@@ -6,10 +6,13 @@ import { Footer } from "@/components/Footer";
 import { Menu } from "@/components/Menu";
 
 export const RootLayoutWrapper = ({children}) => {
-  const state = useSelector((state) => state)
+  const isLoggedIn = useSelector((state) => state?.appReducer?.isLoggedIn)
+  const isShowLoader = useSelector((state) => state?.appReducer?.isShowLoader)
+  // const { isShowToaster, message, bgColor } = useSelector((state) => state?.appReducer?.toaster)
+
   return <div>
     <Header />
-    {state?.appReducer?.isLoggedIn && <Menu />}
+    {isLoggedIn && <Menu />}
     {children}
     <Footer />
   </div>
