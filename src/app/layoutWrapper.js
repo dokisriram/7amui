@@ -4,16 +4,20 @@ import { useSelector } from "react-redux";
 import Header from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Menu } from "@/components/Menu";
+import { Loader } from "@/Common/reusableComponents/Loader";
+import { Toaster } from "@/Common/reusableComponents/Toaster";
 
-export const RootLayoutWrapper = ({children}) => {
+export const RootLayoutWrapper = ({ children }) => {
   const isLoggedIn = useSelector((state) => state?.appReducer?.isLoggedIn)
   const isShowLoader = useSelector((state) => state?.appReducer?.isShowLoader)
-  // const { isShowToaster, message, bgColor } = useSelector((state) => state?.appReducer?.toaster)
+  const { isShowToaster, message, bgColor } = useSelector((state) => state?.appReducer?.toaster)
 
   return <div>
     <Header />
     {isLoggedIn && <Menu />}
     {children}
     <Footer />
+    {isShowLoader && <Loader />}
+    {isShowToaster && <Toaster msg={message} bgcolor={bgcolor} />}
   </div>
 }

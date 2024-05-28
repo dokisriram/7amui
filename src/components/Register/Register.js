@@ -3,11 +3,12 @@ import React, { useState } from 'react'
 import styles from './Register.module.css'
 import configurations from './configuration.json';
 import { Input } from '@/Common/reusableComponents/Input';
-import { validateInputControl, validateForm } from '@/Common/validations/validations';
+import { validateInputControl, validateForm, resetForm } from '@/Common/validations/validations';
 import { Textarea } from '@/Common/reusableComponents/Textarea';
 import { Select } from '@/Common/reusableComponents/Select';
 import Link from 'next/link';
 import { ServerCall } from '@/Common/api/serverCall';
+import { appStore } from '@/redux/store/appStore';
 
 const Register = () => {
     const [inputControls, setInputControls] = useState(configurations)
@@ -17,14 +18,25 @@ const Register = () => {
     const handleRegister = () => {
         const [isInvalidForm, dataObj] = validateForm(inputControls, setInputControls)
         if (isInvalidForm) return;
-        console.log(dataObj)
-        ServerCall.sendPostReq('http://localhost:2000/std/reg-std', { data: dataObj })
+        // console.log(dataObj)
+        appStore.dispatch({type:'LOADER', payload:true})
+        ServerCall.sendPostReq('http://localhost:2020/std/reg-std', { data: dataObj })
         .then((res)=> {
-            console.log(1,res)
+            // console.log(1,res)
+            const {acknowledged, insertedId} = res?.data;
+            if(acknowledged && insertedId){
+                resetForm(inputControls, setInputControls)
+                appStore.dispatch({
+                    type:'TOASTER',
+                    payload: {isShowToaster:true, message: "Successfully Inserted", bgColor:'green'}
+                })
+            } else {
+
+            }
         }).catch((err) => {
-            console.log(2,err);
+            console.error("Register", err.data);
         }).finally(()=> {
-            console.log("Finally");
+            appStore.dispatch({type:'LOADER', payload:false})
         })
     }
     return (

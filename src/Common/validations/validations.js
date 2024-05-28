@@ -73,3 +73,11 @@ export const validateForm = (inputControlsArr, setInputControlsArr) => {
     setInputControlsArr(clonedinputControlsArray)
     return [isFormInvalid, dataObj] 
 }
+
+export const resetForm =(inputControlsArr, setInputControlsArr)=> {
+    const clonedinputControlsArray = JSON.parse(JSON.stringify(inputControlsArr));
+    clonedinputControlsArray.forEach((inputControlObj) => {
+        inputControlObj.value = "";
+    })
+    setInputControlsArr(clonedinputControlsArray)
+}
