@@ -11,7 +11,7 @@ const Input = ({label, errMsg, type, isShowError, handleChange, name, value, opt
                 return <div>
                     {
                         options.map((val, ind) => {
-                            return <Fragment key={`div_${ind}`}><input onChange={handleChange} value={values[ind]} type={type} name={name} /><span className='ms-2 me-3'>{val}</span></Fragment>
+                            return <Fragment key={`div_${ind}`}><input checked={values[ind] === value} onChange={handleChange} value={values[ind]} type={type} name={name} /><span className='ms-2 me-3'>{val}</span></Fragment>
                         })
                     }
                 </div>;
@@ -19,7 +19,7 @@ const Input = ({label, errMsg, type, isShowError, handleChange, name, value, opt
                 return <div>
                 {
                     options.map((val, ind) => {
-                        return <Fragment key={`div_${ind}`}><input onChange={handleChange} value={values[ind]} type={type} name={name} /><span className='ms-2 me-3'>{val}</span></Fragment>
+                        return <Fragment key={`div_${ind}`}><input checked={value.includes(values[ind])} onChange={handleChange} value={values[ind]} type={type} name={name} /><span className='ms-2 me-3'>{val}</span></Fragment>
                     })
                 }
             </div>;

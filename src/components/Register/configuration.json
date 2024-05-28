@@ -5,7 +5,7 @@
         "type": "text",
         "errMsg": "",
         "isShowError": false,
-        "value": "fn",
+        "value": "",
         "criteria": [
             "REQUIRED"
         ],
@@ -17,7 +17,7 @@
         "type": "text",
         "errMsg": "",
         "isShowError": false,
-        "value": "uid",
+        "value": "",
         "criteria": [
             "REQUIRED",
             "EMAIL"
@@ -30,7 +30,7 @@
         "type": "password",
         "errMsg": "",
         "isShowError": false,
-        "value": "pwd",
+        "value": "",
         "criteria": [
             "REQUIRED",
             "MIN5CHARS"
@@ -43,7 +43,7 @@
         "type": "number",
         "errMsg": "",
         "isShowError": false,
-        "value": "1",
+        "value": "",
         "criteria": [
             "REQUIRED"
         ],
@@ -86,7 +86,7 @@
         ],
         "tag": "input",
         "values":[
-            "Cric", "FB", "Hoc"
+            "CRIC", "FB", "HOC"
         ]
     },
     {
@@ -101,9 +101,9 @@
         "options": ["india", "United States", "China"],
         "tag": "select",
         "values": [
-            "Ind",
+            "IND",
             "US", 
-            "Chi"
+            "CHI"
         ]
     },
     {

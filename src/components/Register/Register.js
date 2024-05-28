@@ -7,6 +7,7 @@ import { validateInputControl, validateForm } from '@/Common/validations/validat
 import { Textarea } from '@/Common/reusableComponents/Textarea';
 import { Select } from '@/Common/reusableComponents/Select';
 import Link from 'next/link';
+import { ServerCall } from '@/Common/api/serverCall';
 
 const Register = () => {
     const [inputControls, setInputControls] = useState(configurations)
@@ -17,7 +18,14 @@ const Register = () => {
         const [isInvalidForm, dataObj] = validateForm(inputControls, setInputControls)
         if (isInvalidForm) return;
         console.log(dataObj)
-        alert("send req to server")
+        ServerCall.sendPostReq('http://localhost:2000/std/reg-std', { data: dataObj })
+        .then((res)=> {
+            console.log(1,res)
+        }).catch((err) => {
+            console.log(2,err);
+        }).finally(()=> {
+            console.log("Finally");
+        })
     }
     return (
         <div className='container-fluid'>
