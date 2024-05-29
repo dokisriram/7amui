@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Menu } from "@/components/Menu";
 import { Loader } from "@/Common/reusableComponents/Loader";
 import { Toaster } from "@/Common/reusableComponents/Toaster";
+import Home from "@/components/Home";
 
 export const RootLayoutWrapper = ({ children }) => {
   const isLoggedIn = useSelector((state) => state?.appReducer?.isLoggedIn)
@@ -18,6 +19,6 @@ export const RootLayoutWrapper = ({ children }) => {
     {children}
     <Footer />
     {isShowLoader && <Loader />}
-    {isShowToaster && <Toaster msg={message} bgcolor={bgcolor} />}
+    {isShowToaster && <Toaster msg={message} bgcolor={bgColor} />}
   </div>
 }

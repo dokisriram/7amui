@@ -16,6 +16,7 @@ const Register = () => {
         validateInputControl(eve, inputControls, setInputControls)
     }
     const handleRegister = () => {
+
         const [isInvalidForm, dataObj] = validateForm(inputControls, setInputControls)
         if (isInvalidForm) return;
         // console.log(dataObj)
@@ -39,6 +40,7 @@ const Register = () => {
             appStore.dispatch({type:'LOADER', payload:false})
         })
     }
+    
     return (
         <div className='container-fluid'>
             <h3 className='my-3 text-center'>Register</h3>

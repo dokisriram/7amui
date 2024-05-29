@@ -7,5 +7,30 @@
     background: green;
     color: white;
     border-radius: 5px;
-    padding: 5px;
+    animation: toasterAnimation 0.2s;
+    animation-timing-function: ease-in-out;
+}
+
+.toaster > div{
+    height: 3px;
+    background-color: white;
+
+}
+
+@keyframes toasterAnimation {
+    0%{
+        right: -300px;
+    }
+    25%{
+        right: -150px;
+    }
+    50%{
+        right: 0px;
+    }
+    75%{
+        right: 150px;
+    }
+    100%{
+        right: 0px;
+    }
 }
