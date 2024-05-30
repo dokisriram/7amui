@@ -6,7 +6,7 @@ const Loader = () => {
     return (
         <div>
             <div className={styles.mask}></div>
-            <Image height={300} width={300} src="/loader.gif" alt="Loading..."></Image>
+            <Image unoptimized height={300} width={300} src="/loader.gif" alt="Loading..."></Image>
         </div>
     )
 }

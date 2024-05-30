@@ -1,6 +1,8 @@
+import { Cookie } from "@/Common/api/cookies";
+
 export const init = {
     user: {},
-    isLoggedIn: false,
+    isLoggedIn: Cookie.hasActiveSession(),
     isShowLoader: false,
     toaster:{
         isShowToaster:false,

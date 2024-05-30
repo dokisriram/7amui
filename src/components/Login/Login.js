@@ -8,6 +8,7 @@ import { regExp, validateForm, validateInputControl } from '@/Common/validations
 import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { ServerCall } from '@/Common/api/serverCall'
+import { Cookie } from '@/Common/api/cookies'
 
 
 const Login = () => {
@@ -22,15 +23,17 @@ const Login = () => {
       }
       dispatch({ type: 'LOADER', payload: true })
       const res = await ServerCall.sendPostReq('http://localhost:2020/std/login', { data: dataObj })
-      if(res?.data?.length){
-      dispatch({type: 'LOGIN', payload: {isLoggedIn:true, user:res.data[0 ]}})
-      dispatch({type: 'TOASTER', payload: {isShowToaster:true, message:'Success',bgColor:'green'}})
+      if (res?.data?.length) {
+        console.log(res.data[0])
+        Cookie.setCookie('token', res?.data?.[0]?.token)
+        dispatch({ type: 'LOGIN', payload: { isLoggedIn: true, user: res.data[0] } })
+        dispatch({ type: 'TOASTER', payload: { isShowToaster: true, message: 'Success', bgColor: 'green' } })
       } else {
-      dispatch({type: 'TOASTER', payload: {isShowToaster:true, message:'Please check entered uid or password',bgColor:'red'}})
-      }    
+        dispatch({ type: 'TOASTER', payload: { isShowToaster: true, message: 'Please check entered uid or password', bgColor: 'red' } })
+      }
     } catch (e) {
       console.error(e);
-      dispatch({type: 'TOASTER', payload: {isShowToaster:true, message:e.message,bgColor:'red'}})
+      dispatch({ type: 'TOASTER', payload: { isShowToaster: true, message: e.message, bgColor: 'red' } })
     } finally {
       dispatch({ type: 'LOADER', payload: false })
     }
