@@ -9,11 +9,13 @@ import Link from 'next/link'
 import { useDispatch } from 'react-redux'
 import { ServerCall } from '@/Common/api/serverCall'
 import { Cookie } from '@/Common/api/cookies'
+import { useRouter } from 'next/navigation'
 
 
 const Login = () => {
   const [inputControlsArr, setInputControlsArr] = useState(inputControls)
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleLogin = async () => {
     try {
@@ -28,6 +30,7 @@ const Login = () => {
         Cookie.setCookie('token', res?.data?.[0]?.token)
         dispatch({ type: 'LOGIN', payload: { isLoggedIn: true, user: res.data[0] } })
         dispatch({ type: 'TOASTER', payload: { isShowToaster: true, message: 'Success', bgColor: 'green' } })
+        router.push('/');
       } else {
         dispatch({ type: 'TOASTER', payload: { isShowToaster: true, message: 'Please check entered uid or password', bgColor: 'red' } })
       }

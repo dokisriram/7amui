@@ -1,0 +1,29 @@
+.menu {
+    text-align: right;
+    background: #a6a6b7;
+    line-height: 40px;
+}
+
+.menu > li{
+    display: inline;
+    letter-spacing: 5px;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.menu a{
+    color: white;
+}
+
+.mobileMenuBtn{
+    position: absolute;
+    right: 0px;
+}
+
+.mobileMenuBtn > span{
+    width: 25px;
+    display: block;
+    border: 1px solid;
+    margin-bottom: 5px;
+}
+

@@ -1,6 +1,7 @@
 "use client"
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./mediaQueries.css"
 import 'bootstrap/dist/css/bootstrap.css'
 import { appStore } from "@/redux/store/appStore";
 import { Provider } from "react-redux";
