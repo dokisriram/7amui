@@ -1,11 +1,3 @@
-import React from 'react'
+import { Students } from "@/components/Students";
 
-const page = () => {
-  return (
-    <div>
-      users
-    </div>
-  )
-}
-
-export default page
+export default Students;

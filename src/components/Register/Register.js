@@ -21,7 +21,7 @@ const Register = () => {
         if (isInvalidForm) return;
         // console.log(dataObj)
         appStore.dispatch({type:'LOADER', payload:true})
-        ServerCall.sendPostReq('http://localhost:2020/std/reg-std', { data: dataObj })
+        ServerCall.sendPostReq('std/reg-std', { data: dataObj })
         .then((res)=> {
             // console.log(1,res)
             const {acknowledged, insertedId} = res?.data;
