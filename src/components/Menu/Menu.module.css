@@ -4,6 +4,15 @@
     line-height: 40px;
 }
 
+.mobileMenu{
+    background: #a6a6b7;
+    width: 150px;
+    display: inline-block;
+    padding: 10px !important;
+    position: absolute;
+    transition: left 2s;
+}
+
 .menu > li{
     display: inline;
     letter-spacing: 5px;
@@ -11,8 +20,21 @@
     font-weight: bold;
 }
 
-.menu a{
+.mobileMenu > li{
+   margin-bottom: 10px;
+   letter-spacing: 5px;
+   font-weight: bold;
+}
+
+
+
+.menu a, .mobileMenu a{
     color: white;
+    text-decoration: none;
+}
+.menu a:hover, .mobileMenu a:hover{
+    color: red;
+    text-decoration: underline;
 }
 
 .mobileMenuBtn{
@@ -27,3 +49,6 @@
     margin-bottom: 5px;
 }
 
+.active > a{
+    color: blue !important;
+}
