@@ -1,6 +1,6 @@
 [
     {
-        "name": "Name",
+        "name": "name",
         "label": "Full Name",
         "type": "text",
         "errMsg": "",
